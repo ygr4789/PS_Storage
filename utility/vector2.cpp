@@ -1,5 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <cmath>
 
 const double PI = 2.0 * acos(0.0);
 
@@ -25,19 +24,3 @@ struct vector2 {
     return r * r.dot(*this);
   }
 };
-
-struct test
-{
-  int x;
-  test(int x_ = 0): x(x_) {};
-};
-
-
-int main() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-  cout.tie(0);
-  
-  test t;
-  cout << t.x;
-}
