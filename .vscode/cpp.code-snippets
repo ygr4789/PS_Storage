@@ -1,0 +1,21 @@
+{
+	"ps-start": {
+		"prefix": "ps",
+		"body": [
+			"#include <bits/stdc++.h>",
+			"using namespace std;",
+			"typedef long long ll;",
+			"",
+			"$1",
+			"int main() {",
+			"    ios::sync_with_stdio(0);",
+			"    cin.tie(0);",
+			"    cout.tie(0);",
+			"    ",
+			"    $2",
+			"}",
+		],
+		"description": "ps code snippet"
+	}
+}
+
