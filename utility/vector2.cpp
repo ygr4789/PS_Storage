@@ -23,4 +23,8 @@ struct vector2 {
     vector2 r = rhs.normalize();
     return r * r.dot(*this);
   }
+
+  double ccw(const vector2 &a, const vector2 &b) {
+    return (a-*this).cross(b-*this);
+  }
 };

@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+typedef vector<vector2> polygon;
 const double PI = 2.0 * acos(0.0);
 
 struct vector2 {
@@ -24,20 +25,28 @@ struct vector2 {
     vector2 r = rhs.normalize();
     return r * r.dot(*this);
   }
+
+  double ccw(const vector2 &a, const vector2 &b) {
+    return (a-*this).cross(b-*this);
+  }
 };
 
-struct test
-{
-  int x;
-  test(int x_ = 0): x(x_) {};
-};
-
-
-int main() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-  cout.tie(0);
-  
-  test t;
-  cout << t.x;
+vector<vector2> giftWrap(const vector<vector2> &points) {
+  int n = points.size();
+  vector<vector2> hull;
+  vector2 pivot = *min_element(points.begin(), points.end());
+  hull.push_back(pivot);
+  while(true) {
+    vector2 ph = hull.back(), next = points[0];
+    for(int i=0; i<n; i++) {
+      double cross =  ph.ccw(next, points[i]);
+      double dist = (next-ph).norm() - (points[i]-ph).norm();
+      if(cross < 0 || (cross == 0 && dist < 0)) {
+        next = points[i];
+      }
+    }
+    if(next == pivot) break;
+    hull.push_back(next);
+  }
+  return hull;
 }
