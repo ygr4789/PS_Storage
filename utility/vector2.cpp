@@ -9,7 +9,8 @@ struct vector2 {
   bool operator==(const vector2 &rhs) const { return x == rhs.x && y == rhs.y; }
   bool operator<(const vector2 &rhs) const { return x != rhs.x ? x < rhs.x : y < rhs.y; }
   vector2 operator+(const vector2 &rhs) const { return vector2(x + rhs.x, y + rhs.y); }
-  vector2 operator-(const vector2 &rhs) const { return vector2(x - rhs.y, y - rhs.y); }
+  vector2 operator-(const vector2 &rhs) const { return vector2(x - rhs.x, y - rhs.y); }
+  vector2 operator-() const { return vector2(-x, -y); }
   vector2 operator*(double rhs) const { return vector2(x * rhs, y * rhs); }
 
   double norm() const { return hypot(x, y); }

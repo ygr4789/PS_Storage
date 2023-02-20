@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef vector<vector2> polygon;
 const double PI = 2.0 * acos(0.0);
 
 struct vector2 {
@@ -11,7 +10,8 @@ struct vector2 {
   bool operator==(const vector2 &rhs) const { return x == rhs.x && y == rhs.y; }
   bool operator<(const vector2 &rhs) const { return x != rhs.x ? x < rhs.x : y < rhs.y; }
   vector2 operator+(const vector2 &rhs) const { return vector2(x + rhs.x, y + rhs.y); }
-  vector2 operator-(const vector2 &rhs) const { return vector2(x - rhs.y, y - rhs.y); }
+  vector2 operator-(const vector2 &rhs) const { return vector2(x - rhs.x, y - rhs.y); }
+  vector2 operator-() const { return vector2(-x, -y); }
   vector2 operator*(double rhs) const { return vector2(x * rhs, y * rhs); }
 
   double norm() const { return hypot(x, y); }
@@ -27,7 +27,7 @@ struct vector2 {
   }
 
   double ccw(const vector2 &a, const vector2 &b) {
-    return (a-*this).cross(b-*this);
+    return (a - *this).cross(b - *this);
   }
 };
 
@@ -36,16 +36,16 @@ vector<vector2> giftWrap(const vector<vector2> &points) {
   vector<vector2> hull;
   vector2 pivot = *min_element(points.begin(), points.end());
   hull.push_back(pivot);
-  while(true) {
+  while (true) {
     vector2 ph = hull.back(), next = points[0];
-    for(int i=0; i<n; i++) {
-      double cross =  ph.ccw(next, points[i]);
-      double dist = (next-ph).norm() - (points[i]-ph).norm();
-      if(cross < 0 || (cross == 0 && dist < 0)) {
+    for (int i = 0; i < n; i++) {
+      double cross = ph.ccw(next, points[i]);
+      double dist = (next - ph).norm() - (points[i] - ph).norm();
+      if (cross < 0 || (cross == 0 && dist < 0)) {
         next = points[i];
       }
     }
-    if(next == pivot) break;
+    if (next == pivot) break;
     hull.push_back(next);
   }
   return hull;
