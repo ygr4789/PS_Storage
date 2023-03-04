@@ -6,16 +6,36 @@
 			"using namespace std;",
 			"typedef long long ll;",
 			"",
-			"$1",
 			"int main() {",
 			"  ios::sync_with_stdio(0);",
 			"  cin.tie(0);",
 			"  cout.tie(0);",
 			"  ",
-			"  $2",
+			"  $1",
 			"}",
 		],
 		"description": "ps code snippet"
+	},
+	"ps-test-cases": {
+		"prefix": "ps-t",
+		"body": [
+			"#include <bits/stdc++.h>",
+			"using namespace std;",
+			"typedef long long ll;",
+			"",
+			"int main() {",
+			"  ios::sync_with_stdio(0);",
+			"  cin.tie(0);",
+			"  cout.tie(0);",
+			"",
+			"  int T;",
+			"  cin >> T;",
+			"  for (int t = 0; t < T; t++) {",
+			"    $1",
+			"  }",
+			"}"
+		],
+		"description": "ps-test-cases"
 	}
 }
 
